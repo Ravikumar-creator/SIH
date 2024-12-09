@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Comparison - All States, Districts, and Mandals</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Certificate Comparison - All States, Districts, and Mandals</h2>
+
+     
+    <h3>State Comparison</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>State 1</th>
+                <th>State 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Caste Certificate</td>
+                <td><%= results.states.state1 ? results.states.state1.caste : 0 %></td>
+                <td><%= results.states.state2 ? results.states.state2.caste : 0 %></td>
+            </tr>
+            <tr>
+                <td>Income Certificate</td>
+                <td><%= results.states.state1 ? results.states.state1.income : 0 %></td>
+                <td><%= results.states.state2 ? results.states.state2.income : 0 %></td>
+            </tr>
+            <tr>
+                <td>EWS Certificate</td>
+                <td><%= results.states.state1 ? results.states.state1.ews : 0 %></td>
+                <td><%= results.states.state2 ? results.states.state2.ews : 0 %></td>
+            </tr>
+            <tr>
+                <td><strong>Total Requests</strong></td>
+                <td><strong><%= results.states.state1 ? results.states.state1.total : 0 %></strong></td>
+                <td><strong><%= results.states.state2 ? results.states.state2.total : 0 %></strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    <h3>District Comparison</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>District 1</th>
+                <th>District 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Caste Certificate</td>
+                <td><%= results.districts.district1 ? results.districts.district1.caste : 0 %></td>
+                <td><%= results.districts.district2 ? results.districts.district2.caste : 0 %></td>
+            </tr>
+            <tr>
+                <td>Income Certificate</td>
+                <td><%= results.districts.district1 ? results.districts.district1.income : 0 %></td>
+                <td><%= results.districts.district2 ? results.districts.district2.income : 0 %></td>
+            </tr>
+            <tr>
+                <td>EWS Certificate</td>
+                <td><%= results.districts.district1 ? results.districts.district1.ews : 0 %></td>
+                <td><%= results.districts.district2 ? results.districts.district2.ews : 0 %></td>
+            </tr>
+            <tr>
+                <td><strong>Total Requests</strong></td>
+                <td><strong><%= results.districts.district1 ? results.districts.district1.total : 0 %></strong></td>
+                <td><strong><%= results.districts.district2 ? results.districts.district2.total : 0 %></strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+     
+    <h3>Mandal Comparison</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>Mandal 1</th>
+                <th>Mandal 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Caste Certificate</td>
+                <td><%= results.mandals.mandal1 ? results.mandals.mandal1.caste : 0 %></td>
+                <td><%= results.mandals.mandal2 ? results.mandals.mandal2.caste : 0 %></td>
+            </tr>
+            <tr>
+                <td>Income Certificate</td>
+                <td><%= results.mandals.mandal1 ? results.mandals.mandal1.income : 0 %></td>
+                <td><%= results.mandals.mandal2 ? results.mandals.mandal2.income : 0 %></td>
+            </tr>
+            <tr>
+                <td>EWS Certificate</td>
+                <td><%= results.mandals.mandal1 ? results.mandals.mandal1.ews : 0 %></td>
+                <td><%= results.mandals.mandal2 ? results.mandals.mandal2.ews : 0 %></td>
+            </tr>
+            <tr>
+                <td><strong>Total Requests</strong></td>
+                <td><strong><%= results.mandals.mandal1 ? results.mandals.mandal1.total : 0 %></strong></td>
+                <td><strong><%= results.mandals.mandal2 ? results.mandals.mandal2.total : 0 %></strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency Data</title>
+</head>
+<body>
+
+<h2>Caste Certificate Efficiency</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>State</th>
+            <th>District</th>
+            <th>Mandal</th>
+            <th>Efficiency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (Object.keys(stateEfficiency).length === 0) { %>
+            <tr><td colspan="4">No data available for caste certificates</td></tr>
+        <% } else { %>
+            <% for (let state in stateEfficiency) { %>
+                <% stateEfficiency[state].forEach(efficiency => { %>
+                    <tr>
+                        <td><%= efficiency.state %></td>
+                        <td><%= efficiency.district %></td>
+                        <td><%= efficiency.mandal %></td>
+                        <td><%= efficiency.efficiency %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>
+
+<h2>Income Certificate Efficiency</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>State</th>
+            <th>District</th>
+            <th>Mandal</th>
+            <th>Efficiency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (Object.keys(districtEfficiency).length === 0) { %>
+            <tr><td colspan="4">No data available for income certificates</td></tr>
+        <% } else { %>
+            <% for (let district in districtEfficiency) { %>
+                <% districtEfficiency[district].forEach(efficiency => { %>
+                    <tr>
+                        <td><%= efficiency.state %></td>
+                        <td><%= efficiency.district %></td>
+                        <td><%= efficiency.mandal %></td>
+                        <td><%= efficiency.efficiency %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>
+
+<h2>EWS Certificate Efficiency</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>State</th>
+            <th>District</th>
+            <th>Mandal</th>
+            <th>Efficiency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (Object.keys(mandalEfficiency).length === 0) { %>
+            <tr><td colspan="4">No data available for EWS certificates</td></tr>
+        <% } else { %>
+            <% for (let mandal in mandalEfficiency) { %>
+                <% mandalEfficiency[mandal].forEach(efficiency => { %>
+                    <tr>
+                        <td><%= efficiency.state %></td>
+                        <td><%= efficiency.district %></td>
+                        <td><%= efficiency.mandal %></td>
+                        <td><%= efficiency.efficiency %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>
+
+</body>
+</html> -->

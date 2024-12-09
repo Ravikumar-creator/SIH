@@ -1,0 +1,212 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency Analysis</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .efficient {
+            background-color: #d4edda;
+        }
+        .inefficient {
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h1>Efficiency Analysis</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>District</th>
+                <th>Mandal</th>
+                <th>Caste Avg Time (Days)</th>
+                <th>Caste Efficiency</th>
+                <th>Income Avg Time (Days)</th>
+                <th>Income Efficiency</th>
+                <th>EWS Avg Time (Days)</th>
+                <th>EWS Efficiency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% efficiencyData.forEach(location => { %>
+                <tr>
+                    <td><%= location.state %></td>
+                    <td><%= location.district %></td>
+                    <td><%= location.mandal %></td>
+                    <td><%= location.certificates.caste.averageTime %></td>
+                    <td class="<%= location.certificates.caste.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= location.certificates.caste.efficiency %>
+                    </td>
+                    <td><%= location.certificates.income.averageTime %></td>
+                    <td class="<%= location.certificates.income.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= location.certificates.income.efficiency %>
+                    </td>
+                    <td><%= location.certificates.ews.averageTime %></td>
+                    <td class="<%= location.certificates.ews.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= location.certificates.ews.efficiency %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency Analysis</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .efficient {
+            background-color: #d4edda;
+        }
+        .inefficient {
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h1>Efficiency Analysis</h1>
+
+    <!-- State-Wise Table -->
+    <h2>State-Wise Efficiency Analysis</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>Caste Avg Time (Days)</th>
+                <th>Caste Efficiency</th>
+                <th>Income Avg Time (Days)</th>
+                <th>Income Efficiency</th>
+                <th>EWS Avg Time (Days)</th>
+                <th>EWS Efficiency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stateWiseData.forEach(state => { %>
+                <tr>
+                    <td><%= state.state %></td>
+                    <td><%= state.certificates.caste.averageTime %></td>
+                    <td class="<%= state.certificates.caste.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= state.certificates.caste.efficiency %>
+                    </td>
+                    <td><%= state.certificates.income.averageTime %></td>
+                    <td class="<%= state.certificates.income.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= state.certificates.income.efficiency %>
+                    </td>
+                    <td><%= state.certificates.ews.averageTime %></td>
+                    <td class="<%= state.certificates.ews.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= state.certificates.ews.efficiency %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- District-Wise Table -->
+    <h2>District-Wise Efficiency Analysis</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>District</th>
+                <th>Caste Avg Time (Days)</th>
+                <th>Caste Efficiency</th>
+                <th>Income Avg Time (Days)</th>
+                <th>Income Efficiency</th>
+                <th>EWS Avg Time (Days)</th>
+                <th>EWS Efficiency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% districtWiseData.forEach(district => { %>
+                <tr>
+                    <td><%= district.state %></td>
+                    <td><%= district.district %></td>
+                    <td><%= district.certificates.caste.averageTime %></td>
+                    <td class="<%= district.certificates.caste.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= district.certificates.caste.efficiency %>
+                    </td>
+                    <td><%= district.certificates.income.averageTime %></td>
+                    <td class="<%= district.certificates.income.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= district.certificates.income.efficiency %>
+                    </td>
+                    <td><%= district.certificates.ews.averageTime %></td>
+                    <td class="<%= district.certificates.ews.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= district.certificates.ews.efficiency %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Mandal-Wise Table -->
+    <h2>Mandal-Wise Efficiency Analysis</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>District</th>
+                <th>Mandal</th>
+                <th>Caste Avg Time (Days)</th>
+                <th>Caste Efficiency</th>
+                <th>Income Avg Time (Days)</th>
+                <th>Income Efficiency</th>
+                <th>EWS Avg Time (Days)</th>
+                <th>EWS Efficiency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% mandalWiseData.forEach(mandal => { %>
+                <tr>
+                    <td><%= mandal.state %></td>
+                    <td><%= mandal.district %></td>
+                    <td><%= mandal.mandal %></td>
+                    <td><%= mandal.certificates.caste.averageTime %></td>
+                    <td class="<%= mandal.certificates.caste.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= mandal.certificates.caste.efficiency %>
+                    </td>
+                    <td><%= mandal.certificates.income.averageTime %></td>
+                    <td class="<%= mandal.certificates.income.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= mandal.certificates.income.efficiency %>
+                    </td>
+                    <td><%= mandal.certificates.ews.averageTime %></td>
+                    <td class="<%= mandal.certificates.ews.efficiency === 'Efficient' ? 'efficient' : 'inefficient' %>">
+                        <%= mandal.certificates.ews.efficiency %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

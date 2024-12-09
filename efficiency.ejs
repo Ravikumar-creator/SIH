@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficiency Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Efficiency Data</h1>
+
+    <!-- State-wise Table -->
+    <h2>State-Wise Efficiency</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>Caste Certificate</th>
+                <th>Income Certificate</th>
+                <th>EWS Certificate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stateData.forEach(data => { %>
+            <tr>
+                <td><%= data.state %></td>
+                <td><%= data.certificates.caste.averageTime %> days (<%= data.certificates.caste.efficiency %>)</td>
+                <td><%= data.certificates.income.averageTime %> days (<%= data.certificates.income.efficiency %>)</td>
+                <td><%= data.certificates.ews.averageTime %> days (<%= data.certificates.ews.efficiency %>)</td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <!-- District-wise Table -->
+    <h2>District-Wise Efficiency</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>District</th>
+                <th>Caste Certificate</th>
+                <th>Income Certificate</th>
+                <th>EWS Certificate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% districtData.forEach(data => { %>
+            <tr>
+                <td><%= data.state %></td>
+                <td><%= data.district %></td>
+                <td><%= data.certificates.caste.averageTime %> days (<%= data.certificates.caste.efficiency %>)</td>
+                <td><%= data.certificates.income.averageTime %> days (<%= data.certificates.income.efficiency %>)</td>
+                <td><%= data.certificates.ews.averageTime %> days (<%= data.certificates.ews.efficiency %>)</td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <!-- Mandal-wise Table -->
+    <h2>Mandal-Wise Efficiency</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>District</th>
+                <th>Mandal</th>
+                <th>Caste Certificate</th>
+                <th>Income Certificate</th>
+                <th>EWS Certificate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% mandalData.forEach(data => { %>
+            <tr>
+                <td><%= data.state %></td>
+                <td><%= data.district %></td>
+                <td><%= data.mandal %></td>
+                <td><%= data.certificates.caste.averageTime %> days (<%= data.certificates.caste.efficiency %>)</td>
+                <td><%= data.certificates.income.averageTime %> days (<%= data.certificates.income.efficiency %>)</td>
+                <td><%= data.certificates.ews.averageTime %> days (<%= data.certificates.ews.efficiency %>)</td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

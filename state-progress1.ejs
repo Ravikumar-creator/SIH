@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Progress</title>
+    <script>
+         
+        const state = '<%= state %>';  
+
+        async function fetchCounts() {
+            try {
+                const response = await fetch(`/user-count/state/${state}`);
+                const data = await response.json();
+                console.log("Data fetched:", data);
+            } catch (error) {
+                console.error("Error fetching counts:", error);
+            }
+        }
+
+        fetchCounts();  
+
+
+         
+        setInterval(fetchCounts, 10000);  
+
+        window.onload = fetchCounts;
+    </script>
+</head>
+
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Progress</title>
+</head>
+<body>
+    <h1>Progress for State: <%= state %></h1>
+    <p>Total Applications: <%= total %></p>
+    <p>Caste Applications: <%= caste %></p>
+    <p>Income Applications: <%= income %></p>
+    <p>EWS Applications: <%= ews %></p>
+</body>
+
+</html>

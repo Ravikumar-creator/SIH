@@ -1,0 +1,100 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Efficiency Comparison</title>
+</head>
+<body>
+    <h1>Staff Efficiency Comparison for Certificate Processing</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Caste Processing Time</th>
+                <th>Income Processing Time</th>
+                <th>EWS Processing Time</th>
+                <th>Total Processing Time</th>
+                <th>Efficiency</th>
+                <th>Suggestion</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                <td>State 1</td>
+                <td><%= state1.casteAverage %> days</td>
+                <td><%= state1.incomeAverage %> days</td>
+                <td><%= state1.ewsAverage %> days</td>
+                <td><%= state1.totalAverage %> days</td>
+                <td><%= state1Efficiency %></td>
+                <td><%= state1Efficiency === 'Inefficient' ? 'Reduce staff or reallocate staff to districts with fewer cases.' : 'No action required' %></td>
+            </tr>
+      
+            <tr>
+                <td>State 2</td>
+                <td><%= state2.casteAverage %> days</td>
+                <td><%= state2.incomeAverage %> days</td>
+                <td><%= state2.ewsAverage %> days</td>
+                <td><%= state2.totalAverage %> days</td>
+                <td><%= state2Efficiency %></td>
+                <td><%= state2Efficiency === 'Inefficient' ? 'Reduce staff or reallocate staff to districts with fewer cases.' : 'No action required' %></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+  -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Staff Efficiency Comparison</title>
+      <style>
+          table {
+              width: 100%;
+              border-collapse: collapse;
+          }
+          table, th, td {
+              border: 1px solid black;
+          }
+          th, td {
+              padding: 8px;
+              text-align: center;
+          }
+      </style>
+  </head>
+  <body>
+      <h1>Staff Efficiency Comparison for Certificate Processing</h1>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th>Area</th>
+                  <th>Caste Processing Time</th>
+                  <th>Income Processing Time</th>
+                  <th>EWS Processing Time</th>
+                  <th>Total Processing Time</th>
+                  <th>Efficiency</th>
+                  <th>Suggestion</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% efficiencyData.forEach(function(data) { %>
+                  <tr>
+                      <td><%= data.area %></td>
+                      <td><%= data.casteProcessingTime %> days</td>
+                      <td><%= data.incomeProcessingTime %> days</td>
+                      <td><%= data.ewsProcessingTime %> days</td>
+                      <td><%= data.totalProcessingTime.toFixed(2) %> days</td>
+                      <td><%= data.efficiency %></td>
+                      <td><%= data.suggestion %></td>
+                  </tr>
+              <% }); %>
+          </tbody>
+      </table>
+  </body>
+  </html>
+  

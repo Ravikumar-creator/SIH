@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Certificate Requests</title>
+</head>
+<body>
+    <h2>Pending Certificate Requests</h2>
+    <% users.forEach(user => { %>
+        <div>
+            <h3><%= user.name %> - <%= user.email %></h3>
+            <p>Status: <%= user.casteApplication.status %></p>
+            <button onclick="verifyDocument('<%= user._id %>', 'caste')">Verify Document</button>
+            <button onclick="rejectRequest('<%= user._id %>', 'caste')">Reject Request</button>
+            <hr>
+        </div>
+    <% }); %>
+    
+    <script>
+        function verifyDocument(userId, certificateType) {
+            // Simulate verification (you can prompt the admin to actually verify the document)
+            const isVerified = confirm('Is the document verified?');
+            const feedback = isVerified ? '' : prompt('Please provide feedback for rejection');
+
+            fetch(`/admin/verify/${certificateType}/${userId}`, {
+                method: 'POST',
+                body: JSON.stringify({ isVerified, feedback }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload(); // Reload the page to show updated status
+            })
+            .catch(err => {
+                console.error(err);
+                alert('An error occurred');
+            });
+        }
+
+        function rejectRequest(userId, certificateType) {
+            const feedback = prompt('Please provide the reason for rejection');
+            fetch(`/admin/verify/${certificateType}/${userId}`, {
+                method: 'POST',
+                body: JSON.stringify({ isVerified: false, feedback }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload();
+            })
+            .catch(err => {
+                console.error(err);
+                alert('An error occurred');
+            });
+        }
+    </script>
+</body>
+</html>

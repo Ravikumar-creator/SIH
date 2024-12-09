@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Efficiency Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .efficient {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .inefficient {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Staff Efficiency Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Average Caste Processing Time</th>
+                <th>Average Income Processing Time</th>
+                <th>Average EWS Processing Time</th>
+                <th>Average Total Processing Time</th>
+                <th>Staff Efficiency</th>
+                <th>Suggestion</th>
+            </tr>
+        </thead>
+        <tbody id="efficiency-table-body">
+        </tbody>
+    </table>
+    <script>
+        async function fetchEfficiencyData() {
+            const response = await fetch('/staff-efficiency');
+            const data = await response.json();
+            const tableBody = document.getElementById('efficiency-table-body');
+
+            data.forEach(row => {
+                const tableRow = document.createElement('tr');
+
+                Object.entries(row).forEach(([key, value]) => {
+                    const cell = document.createElement('td');
+                    if (key === "Staff Efficiency") {
+                        cell.className = value === "Efficient" ? "efficient" : "inefficient";
+                    }
+                    cell.textContent = value;
+                    tableRow.appendChild(cell);
+                });
+
+                tableBody.appendChild(tableRow);
+            });
+        }
+
+        fetchEfficiencyData();
+    </script>
+</body>
+</html>

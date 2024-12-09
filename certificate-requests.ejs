@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Requests</title>
+</head>
+<body>
+    <h1>Certificate Requests</h1>
+    <ul>
+        <% if (requests && requests.length > 0) { %>
+            <% requests.forEach(request => { %>
+                <li>
+                    <p>Certificate ID: <%= request._id %></p>
+                    <p>Applicant Name: <%= request.applicantName %></p>
+                    <p>Certificate Type: <%= request.certificateType %></p>
+                    <p>Status: <%= request.status %></p>
+                    <form method="POST" action="/update-status/<%= request._id %>">
+                        <button type="submit" name="action" value="verify">Verify</button>
+                        <button type="submit" name="action" value="reject">Reject</button>
+                    </form>
+                    <form method="POST" action="/issue-certificate/<%= request._id %>">
+                        <button type="submit" name="action" value="issue">Issue Certificate</button>
+                    </form>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>No certificate requests available.</p>
+        <% } %>
+    </ul>
+</body>
+</html>

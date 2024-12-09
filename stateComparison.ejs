@@ -1,0 +1,149 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Comparison - Certificate Applications</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>State Comparison - Certificate Applications</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>State 1</th>
+                <th>State 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Caste Certificate</td>
+                <td><%= state1Data.caste %></td>
+                <td><%= state2Data.caste %></td>
+            </tr>
+            <tr>
+                <td>Income Certificate</td>
+                <td><%= state1Data.income %></td>
+                <td><%= state2Data.income %></td>
+            </tr>
+            <tr>
+                <td>EWS Certificate</td>
+                <td><%= state1Data.ews %></td>
+                <td><%= state2Data.ews %></td>
+            </tr>
+            <tr>
+                <td><strong>Total Requests</strong></td>
+                <td><strong><%= state1Data.total %></strong></td>
+                <td><strong><%= state2Data.total %></strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Comparison</title>
+</head>
+<body>
+    <h1>State Comparison</h1>
+    
+    <h2>State 1</h2>
+    <table border="1">
+        <tr>
+            <th>Certificate Type</th>
+            <th>Pending</th>
+            <th>Accepted</th>
+            <th>Rejected</th>
+        </tr>
+        <tr>
+            <td>Caste</td>
+            <td><%= state1Data.caste.pending %></td>
+            <td><%= state1Data.caste.accepted %></td>
+            <td><%= state1Data.caste.rejected %></td>
+        </tr>
+        <tr>
+            <td>Income</td>
+            <td><%= state1Data.income.pending %></td>
+            <td><%= state1Data.income.accepted %></td>
+            <td><%= state1Data.income.rejected %></td>
+        </tr>
+        <tr>
+            <td>EWS</td>
+            <td><%= state1Data.ews.pending %></td>
+            <td><%= state1Data.ews.accepted %></td>
+            <td><%= state1Data.ews.rejected %></td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td><%= state1Data.totalPending %></td>
+            <td><%= state1Data.totalAccepted %></td>
+            <td><%= state1Data.totalRejected %></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>State 2</h2>
+    <table border="1">
+        <tr>
+            <th>Certificate Type</th>
+            <th>Pending</th>
+            <th>Accepted</th>
+            <th>Rejected</th>
+        </tr>
+        <tr>
+            <td>Caste</td>
+            <td><%= state2Data.caste.pending %></td>
+            <td><%= state2Data.caste.accepted %></td>
+            <td><%= state2Data.caste.rejected %></td>
+        </tr>
+        <tr>
+            <td>Income</td>
+            <td><%= state2Data.income.pending %></td>
+            <td><%= state2Data.income.accepted %></td>
+            <td><%= state2Data.income.rejected %></td>
+        </tr>
+        <tr>
+            <td>EWS</td>
+            <td><%= state2Data.ews.pending %></td>
+            <td><%= state2Data.ews.accepted %></td>
+            <td><%= state2Data.ews.rejected %></td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td><%= state2Data.totalPending %></td>
+            <td><%= state2Data.totalAccepted %></td>
+            <td><%= state2Data.totalRejected %></td>
+        </tr>
+    </table>
+
+</body>
+</html>

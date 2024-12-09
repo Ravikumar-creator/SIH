@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Status Comparison</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Application Status Comparison - All States, Districts, and Mandals</h2>
+
+    <!-- State Comparison -->
+    <h3>State Comparison</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>State 1 (Pending)</th>
+                <th>State 1 (Accepted)</th>
+                <th>State 1 (Rejected)</th>
+                <th>State 2 (Pending)</th>
+                <th>State 2 (Accepted)</th>
+                <th>State 2 (Rejected)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% const certificates = ['casteApplication', 'incomeApplication', 'ewsApplication']; %>
+            <% certificates.forEach(cert => { %>
+                <tr>
+                    <td><%= cert.charAt(0).toUpperCase() + cert.slice(1, cert.indexOf('Application')) %> Certificate</td>
+                    <td><%= results.state1[cert].pending %></td>
+                    <td><%= results.state1[cert].accepted %></td>
+                    <td><%= results.state1[cert].rejected %></td>
+                    <td><%= results.state2[cert].pending %></td>
+                    <td><%= results.state2[cert].accepted %></td>
+                    <td><%= results.state2[cert].rejected %></td>
+                </tr>
+            <% }); %>
+            <tr>
+                <td><strong>Total Requests</strong></td>
+                <td><strong><%= results.state1.casteApplication.total + results.state1.incomeApplication.total + results.state1.ewsApplication.total %></strong></td>
+                <td><strong><%= results.state2.casteApplication.total + results.state2.incomeApplication.total + results.state2.ewsApplication.total %></strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

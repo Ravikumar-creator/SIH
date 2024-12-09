@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Certificate Status for <%= user.name %></title>
+</head>
+<body>
+    <h1>Track Certificate Status for <%= user.name %></h1>
+
+    <h2>Caste Certificate</h2>
+    <table border="1">
+        <tr>
+            <th>Request Date</th>
+            <th>Accepted Date</th>
+            <th>Actual Date to be Accepted</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><%= user.casteApplication?.requestDate || 'N/A' %></td>
+            <td><%= user.casteApplication?.acceptedDate || 'N/A' %></td>
+            <td>
+                <% if (user.casteApplication?.requestDate) { %>
+                    <%= (new Date(new Date(user.casteApplication.requestDate).setDate(new Date(user.casteApplication.requestDate).getDate() + 2))).toLocaleDateString() %>
+                <% } else { %> N/A <% } %>
+            </td>
+            <td><%= user.casteApplication?.status || 'Pending' %></td>
+        </tr>
+    </table>
+
+    <h2>Income Certificate</h2>
+    <table border="1">
+        <tr>
+            <th>Request Date</th>
+            <th>Accepted Date</th>
+            <th>Actual Date to be Accepted</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><%= user.incomeApplication?.requestDate || 'N/A' %></td>
+            <td><%= user.incomeApplication?.acceptedDate || 'N/A' %></td>
+            <td>
+                <% if (user.incomeApplication?.requestDate) { %>
+                    <%= (new Date(new Date(user.incomeApplication.requestDate).setDate(new Date(user.incomeApplication.requestDate).getDate() + 3))).toLocaleDateString() %>
+                <% } else { %> N/A <% } %>
+            </td>
+            <td><%= user.incomeApplication?.status || 'Pending' %></td>
+        </tr>
+    </table>
+
+    <h2>EWS Certificate</h2>
+    <table border="1">
+        <tr>
+            <th>Request Date</th>
+            <th>Accepted Date</th>
+            <th>Actual Date to be Accepted</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><%= user.ewsApplication?.requestDate || 'N/A' %></td>
+            <td><%= user.ewsApplication?.acceptedDate || 'N/A' %></td>
+            <td>
+                <% if (user.ewsApplication?.requestDate) { %>
+                    <%= (new Date(new Date(user.ewsApplication.requestDate).setDate(new Date(user.ewsApplication.requestDate).getDate() + 4))).toLocaleDateString() %>
+                <% } else { %> N/A <% } %>
+            </td>
+            <td><%= user.ewsApplication?.status || 'Pending' %></td>
+        </tr>
+    </table>
+
+    <a href="/user-status">Back to Track Status</a>
+</body>
+</html>

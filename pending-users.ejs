@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Users</title>
+</head>
+<body>
+    <h1>Pending Applications</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Certificate Type</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <% ['caste', 'income', 'ews'].forEach(type => { 
+                    const app = user[`${type}Application`];
+                    if (app && app.status === 'Pending') { %>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= type.charAt(0).toUpperCase() + type.slice(1) %></td>
+                            <td><%= app.status %></td>
+                            <td>
+                                <form action="/scan" method="GET">
+                                    <button type="submit">Scan Documents</button>
+                                </form>
+                                <button 
+                                    onclick="updateStatus('<%= user._id %>', '<%= type %>')">Update Status</button>
+                            </td>
+                        </tr>
+                    <% } 
+                }); %>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        async function updateStatus(userId, type) {
+            const response = await fetch(`/update-status/${userId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type })
+            });
+
+            if (response.ok) {
+                alert('Status updated successfully!');
+                location.reload(); // Reload to update the table
+            } else {
+                alert('Error updating status.');
+            }
+        }
+    </script>
+</body>
+</html>

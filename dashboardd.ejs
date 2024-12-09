@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Your styling here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Section for displaying certificate counts -->
+        <div id="certificateCounts">
+            <h2>Certificate Counts for Selected State</h2>
+            <p>Total Certificates: <span id="totalCount"></span></p>
+            <p>Caste Certificates: <span id="casteCount"></span></p>
+            <p>Income Certificates: <span id="incomeCount"></span></p>
+            <p>EWS Certificates: <span id="ewsCount"></span></p>
+        </div>
+
+        <!-- Logout button (optional) -->
+        <form action="/api/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <script>
+        // Fetch certificate counts for the state stored in localStorage
+        async function getCertificateCounts(state) {
+            try {
+                const response = await fetch(`/api/user-count/state/${state}`);
+                const data = await response.json();
+
+                if (data && data.total !== undefined) {
+                    document.getElementById("totalCount").textContent = data.total;
+                    document.getElementById("casteCount").textContent = data.caste;
+                    document.getElementById("incomeCount").textContent = data.income;
+                    document.getElementById("ewsCount").textContent = data.ews;
+                } else {
+                    alert('Failed to fetch certificate counts');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error fetching counts');
+            }
+        }
+
+        // On page load, get the state from localStorage and fetch counts
+        window.onload = () => {
+            const selectedState = localStorage.getItem('selectedState');
+
+            if (!selectedState) {
+                window.location.href = '/login';  // Redirect to login if no state found in localStorage
+            } else {
+                getCertificateCounts(selectedState);
+            }
+        };
+    </script>
+</body>
+</html>
